@@ -1,0 +1,47 @@
+[![DOI](https://img.shields.io/badge/DOI-10.1007%2Fs00158--023--03653--2-blue)](https://doi.org/10.1007/s00158-023-03653-2)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7773404.svg)](https://doi.org/10.5281/zenodo.7773404)
+
+
+
+This repository contains the source code for the numerical experiments considered
+in [A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells](https://doi.org/10.1007/s00158-023-03653-2) by Leon Baeck, Sebastian Blauth, Christian Leithäuser, René Pinnau and Kevin Sturm.
+
+To run the code, you have to install [cashocs](https://cashocs.readthedocs.io/)
+first, which includes all necessary prerequisites. The results presented in this
+repository have been obtained with version 2.0.0-alpha3 of cashocs (which uses FEniCS 2019.1).
+
+The repository consists of the following test cases:
+
+- The five-holes double-pipe example (named `five_holes_double_pipe`) which is considered in Section 4 of the paper.
+
+- The topology optimization of a bipolar plate model (named `bipolar_plate`) which is considered in Section 5 of the paper.
+
+In each of the directories, there is a `main.py` file, which can be used to run the code. This file runs the entire benchmark, consisting of the application of the deflation approach for the respective problem, as presented in [A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells](https://doi.org/10.1007/s00158-023-03653-2).
+
+Further, each directory, contains a file `visualization.py`, which generates the plots used in the paper. The repository is already initialized with the solutions obtained for the numerical examples in the paper, so that this can be run directly.
+
+This software is citeable under the following DOI: [10.5281/zenodo.7773404](https://doi.org/10.5281/zenodo.7773404).
+
+If you use the deflation approach for your work, please cite the paper
+
+	A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells
+	Leon Baeck, Sebastian Blauth, Christian Leithäuser, René Pinnau and Kevin Sturm
+	Structural and Multidisciplinary Optimization, Volume 66, 2023
+	https://doi.org/10.1007/s00158-023-03653-2
+
+If you are using BibTeX, you can use the following entry:
+
+	@Article{Baeck2024Deflation,
+	  author   = {Baeck, Leon and Blauth, Sebastian and Leith\"auser, Christian and Pinnau, Ren\'e and Sturm, Kevin},
+	  journal  = {Struct. Multidiscip. Optim.},
+	  title    = {A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells},
+	  year     = {2023},
+	  issn     = {1615-147X,1615-1488},
+	  number   = {9},
+	  pages    = {203},
+	  volume   = {66},
+	  doi      = {10.1007/s00158-023-03653-2},
+	  fjournal = {Structural and Multidisciplinary Optimization},
+	  mrclass  = {99-06},
+	  mrnumber = {4635978},
+	}
