@@ -27,11 +27,11 @@ If you use the deflation approach for your work, please cite the paper
 If you are using BibTeX, you can use the following entry:
 
 	@misc{Baeck2024Deflation,
-	  author   = {Baeck, Leon and Blauth, Sebastian and Leith\"auser, Christian and Pinnau, Ren\'e and Sturm, Kevin},
-	  title    = {A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells},
-	  year     = {2024},
-	  doi      = {10.48550/arXiv.2406.17491},
-      eprint={2406.17491},
-	  archivePrefix={arXiv},
+	  author        = {Baeck, Leon and Blauth, Sebastian and Leith\"auser, Christian and Pinnau, Ren\'e and Sturm, Kevin},
+	  title         = {A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells},
+	  year          = {2024},
+	  doi           = {10.48550/arXiv.2406.17491},
+      eprint        = {2406.17491},
+	  archivePrefix = {arXiv},
 	}
 
