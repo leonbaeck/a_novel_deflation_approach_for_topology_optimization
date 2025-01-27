@@ -49,7 +49,7 @@ for i in range(0, limit):
     file_phi.read(phi, 'phi_{d}'.format(d=i))
     file_phi.close()
 
-    constraint_val = float(lines_val[3][-7:-1])
+    constraint_val = float(lines_val[i])
 
     loc = (constraint_val - 74.) / 26.
     new_color = cmap2(loc)
@@ -57,7 +57,7 @@ for i in range(0, limit):
     j = i
     if i in min_list:
         j = min_list.index(i) + 1
-        vals_min.append(constraint_val)
+        vals_min.append(100. - constraint_val)
 
         plot(phi, vmin=-1e-7, vmax=1e-7, cmap=cmap)
         plt.xlabel(
@@ -68,7 +68,7 @@ for i in range(0, limit):
         plt.xticks([])
         plt.yticks([])
         plt.savefig(
-            './results/phi_{d}.png'.format(d=i), bbox_inches='tight',
+            './results/phi/phi_{d}.png'.format(d=i), bbox_inches='tight',
             transparent=True
         )
         plt.close()

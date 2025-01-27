@@ -145,22 +145,6 @@ def InterpolateLevelSetToElems(levelset_vertex_values, mesh_cells, val1, val2, E
 
     return ratio_vec
 
-@numba.vectorize
-def Check(psi0, psi1, psi2, EPS):
-    if abs(psi0) >= EPS and abs(psi1) >= EPS and abs(psi2) >= EPS:
-        reinit = False
-    else:
-        reinit = True
-    return reinit
-
-def CheckReinitialization(levelset_vertex_values, mesh_cells, EPS):
-    vals = levelset_vertex_values[mesh_cells]
-    vec = Check(vals[:, 0], vals[:, 1], vals[:, 2], EPS)
-    reinit = False
-    for i in range(0, len(vec)):
-        if vec[i] == True:
-            reinit = True
-    return reinit
 
 def interpolate_by_volume(
     cell_function: Function,
@@ -182,38 +166,5 @@ def interpolate_by_volume(
     test = TestFunction(function_space)
 
     arr = assemble(cell_function * test * dx)
-    vol = assemble(test * dx)
-    node_function.vector()[:] = arr[:] / vol[:]
-
-
-def interpolate_by_volume_average(
-    levelset_function: Function,
-    form_neg: ufl.core.expr.Expr,
-    form_pos: ufl.core.expr.Expr,
-    node_function: Function,
-    ) -> None:
-    """Averages a DG0 function and interpolates it into a CG1 space.
-
-    The averaging is weighted by the volume of the cells.
-
-    Args:
-        cell_function: The DG0 function.
-        node_function: The resulting piecewise continuous function.
-
-    """
-    function_space = node_function.function_space()
-    mesh = function_space.mesh()
-    dg0_space = FunctionSpace(mesh, "DG", 0)
-    dx = Measure("dx", mesh)
-
-    indicator_omega = Function(dg0_space)
-    vertex_values_phi = levelset_function.compute_vertex_values()
-    indicator_omega.vector()[:] = InterpolateLevelSetToElems(vertex_values_phi, mesh.cells(), 1.0, 0.0,
-                                                             mesh.hmax() * 1e-6)
-
-    test = TestFunction(function_space)
-    form_td = form_neg * indicator_omega + form_pos * (Constant(1.0) - indicator_omega)
-
-    arr = assemble(form_td * test * dx)
     vol = assemble(test * dx)
     node_function.vector()[:] = arr[:] / vol[:]
