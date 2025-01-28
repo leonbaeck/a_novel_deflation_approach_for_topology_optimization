@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14755248.svg)](https://doi.org/10.5281/zenodo.14755248)
+
+
+
 This repository contains the source code for the numerical experiments considered
 in [A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells](https://doi.org/10.48550/arXiv.2406.17491) by Leon Baeck, Sebastian Blauth, Christian Leithäuser, René Pinnau and Kevin Sturm.
 
@@ -15,7 +19,7 @@ In each of the directories, there is a `main.py` file, which can be used to run 
 
 Further, each directory, contains a file `visualization.py`, which generates the plots used in the paper. The repository is already initialized with the solutions obtained for the numerical examples in the paper, so that this can be run directly.
 
-This software is citeable under the following DOI: .
+This software is citeable under the following DOI: [10.5281/zenodo.14755248](https://doi.org/10.5281/zenodo.14755248).
 
 If you use the deflation approach for your work, please cite the paper
 
@@ -31,7 +35,7 @@ If you are using BibTeX, you can use the following entry:
 	  title         = {A Novel Deflation Approach for Topology Optimization and Application for Optimization of Bipolar Plates of Electrolysis Cells},
 	  year          = {2024},
 	  doi           = {10.48550/arXiv.2406.17491},
-      eprint        = {2406.17491},
+          eprint        = {2406.17491},
 	  archivePrefix = {arXiv},
 	}
 
