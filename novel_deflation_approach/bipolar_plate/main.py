@@ -75,15 +75,6 @@ gradient = -(au - al) * dot(u, v)
 
 
 def save_functions_def(top, it):
-    plot(top.phi, vmin=-1e-7, vmax=1e-7, cmap=cmap)
-    plt.xticks([])
-    plt.yticks([])
-    plt.axis('off')
-    plt.savefig(
-        "./results/phi/phi_{d}_def.png".format(
-            d=it), bbox_inches='tight')
-    plt.close()
-
     file_phi = HDF5File(
         mesh.mpi_comm(), './results/xdmf/phi_{d}_def.h5'.format(d=it), 'w'
     )
@@ -97,13 +88,6 @@ def save_functions_def(top, it):
 
 
 def save_functions(top, it, It, It_re, vol_const):
-    plot(top.phi, vmin=-1e-7, vmax=1e-7, cmap=cmap)
-    plt.xticks([])
-    plt.yticks([])
-    plt.axis('off')
-    plt.savefig("./results/phi/phi_{d}.png".format(d=it), bbox_inches='tight')
-    plt.close()
-
     file_phi = HDF5File(
         mesh.mpi_comm(), './results/xdmf/phi_{d}.h5'.format(d=it), 'w'
     )

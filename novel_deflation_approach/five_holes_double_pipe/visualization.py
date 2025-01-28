@@ -66,7 +66,7 @@ for i in range(0, limit):
 plt.style.use("tableau-colorblind10")
 
 y_array = range(0, limit)
-plt.bar(y_array, it_total_list,  label='Restart', width=1.0)
+plt.bar(y_array, it_total_list,  label='Total', width=1.0)
 plt.bar(y_array, it_deflation_list,  label='Deflation', width=1.0)
 plt.ylabel('Number of Iterations', fontweight='bold', fontsize=10)
 plt.xlabel('Deflation iteration', fontweight='bold', fontsize=10)

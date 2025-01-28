@@ -9,7 +9,7 @@ import numpy as np
 import ufl
 import ufl.algorithms
 
-from interpolations import InterpolateLevelSetToElems, interpolate_by_volume
+from interpolations import InterpolateLevelSetToElems
 
 from cashocs import _forms
 from cashocs import _pde_problems
@@ -218,6 +218,16 @@ class TopologyOptimizationProblem(optimization_problem.OptimizationProblem):
         norm_a = self.norm(a)
         a.vector()[:] /= norm_a
 
+    def interpolate_by_volume(
+            self, cell_function: fenics.Function, node_function: fenics.Function
+    ) -> None:
+        function_space = node_function.function_space()
+        test = fenics.TestFunction(function_space)
+        
+        arr = fenics.assemble(cell_function * test * self.dx)
+        vol = fenics.assemble(test * self.dx)
+        node_function.vector()[:] = arr[:] / vol[:]
+
     def compute_gradient(self):
         self.update_level_set()
         self.state_problem.has_solution = False
@@ -234,7 +244,7 @@ class TopologyOptimizationProblem(optimization_problem.OptimizationProblem):
                 grad_loc += self.gradient[i]
 
         self.dg0_function.vector()[:] = fenics.project(grad_loc, self.DG0).vector()[:]
-        interpolate_by_volume(self.dg0_function, self.top_gradient)
+        self.interpolate_by_volume(self.dg0_function, self.top_gradient)
 
     def update_level_set(self):
         vertex_values_phi = self.phi.compute_vertex_values()

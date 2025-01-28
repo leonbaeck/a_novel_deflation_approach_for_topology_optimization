@@ -60,13 +60,6 @@ gradient = -(au - al) * (u[0] * (u[0] + v[0]) + u[1] * (u[1] + v[1]))
 
 
 def save_functions_def(top, it):
-    plot(top.phi, vmin=-1e-7, vmax=1e-7, cmap=cmap)
-    plt.xticks([])
-    plt.yticks([])
-    plt.axis('off')
-    plt.savefig("./results/phi/phi_{d}_def.png".format(d=it), bbox_inches='tight')
-    plt.close()
-
     file_phi = HDF5File(
         mesh.mpi_comm(), './results/xdmf/phi_{d}_def.h5'.format(d=it), 'w'
     )
@@ -80,13 +73,6 @@ def save_functions_def(top, it):
 
 
 def save_functions(top, it, It, It_re, val_obj):
-    plot(top.phi, vmin=-1e-7, vmax=1e-7, cmap=cmap)
-    plt.axis('off')
-    plt.xticks([])
-    plt.yticks([])
-    plt.savefig("./results/phi/phi_{d}.png".format(d=it), bbox_inches='tight')
-    plt.close()
-
     file_phi = HDF5File(
         mesh.mpi_comm(), './results/xdmf/phi_{d}.h5'.format(d=it), 'w'
     )
@@ -103,7 +89,7 @@ def save_functions(top, it, It, It_re, val_obj):
     file_objective.write("%.2f\n" % val_obj)
 
 
-for num_it in range(0, 101):
+for num_it in range(0, 6):
     J_new = [J]
     gradient_new = [gradient]
     beta_new = [Function(DG0)] * num_it

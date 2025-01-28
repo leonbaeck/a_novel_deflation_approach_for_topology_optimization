@@ -144,27 +144,3 @@ def InterpolateLevelSetToElems(levelset_vertex_values, mesh_cells, val1, val2, E
     ratio_vec[:] = val2 + s * (val1 - val2)
 
     return ratio_vec
-
-
-def interpolate_by_volume(
-    cell_function: Function,
-    node_function: Function,
-) -> None:
-    """Averages a DG0 function and interpolates it into a CG1 space.
-
-    The averaging is weighted by the volume of the cells.
-
-    Args:
-        cell_function: The DG0 function.
-        node_function: The resulting piecewise continuous function.
-
-    """
-    function_space = node_function.function_space()
-    mesh = function_space.mesh()
-    dx = Measure("dx", mesh)
-
-    test = TestFunction(function_space)
-
-    arr = assemble(cell_function * test * dx)
-    vol = assemble(test * dx)
-    node_function.vector()[:] = arr[:] / vol[:]
