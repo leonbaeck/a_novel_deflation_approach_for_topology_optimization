@@ -7,7 +7,7 @@ in [A Novel Deflation Approach for Topology Optimization and Application for Opt
 
 To run the code, you have to install [cashocs](https://cashocs.readthedocs.io/)
 first, which includes all necessary prerequisites. The results presented in this
-repository have been obtained with version 2.2.0-dev of cashocs (which uses FEniCS 2019.1) and numba version 0.55.2.
+repository have been obtained with version 2.2.0 of cashocs (which uses FEniCS 2019.1) and numba version 0.55.2.
 
 The repository consists of the following test cases:
 
